@@ -1,0 +1,49 @@
+.task-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.task-input {
+	width: 30rem;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 0 10px;
+	font-size: 16px;
+	font-weight: bold;
+	box-shadow: 0 0 0 1px #ffffff;
+}
+
+.check-icon {
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+	right: 2.5rem;
+	top: 0.2rem;
+	padding: 0.1rem;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.86);
+	border-radius: 50%;
+	box-shadow: 0 0 0 1px #13131347;
+	color: white;
+}
+
+.todo-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 3rem;
+}
+
+.todo-item {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 25rem;
+	height: 40px;
+	padding: 0 10px;
+	font-size: 16px;
+}
