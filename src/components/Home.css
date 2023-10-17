@@ -25,6 +25,6 @@
 
 @keyframes blink {
 	50% {
-		border-color: transparent;
+		border-color: #ffc83db5;
 	}
 }
