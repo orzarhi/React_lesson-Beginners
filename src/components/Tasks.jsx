@@ -16,8 +16,7 @@ export const Tasks = () => {
     return (
         <>
             <div className='task-wrapper'>
-                <h1>Tasks</h1>
-                <div style={{ display: 'flex' }}>
+                <div>
                     <input
                         onChange={({ target }) => setTodo(target.value)}
                         value={todo}

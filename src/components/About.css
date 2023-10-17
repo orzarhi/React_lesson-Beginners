@@ -1,0 +1,12 @@
+.about-wrapper {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	flex-direction: column;
+	padding: 5% 0;
+}
+
+.description {
+	width: 50%;
+	text-align: center;
+}
