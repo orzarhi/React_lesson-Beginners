@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Check, Pencil, Trash2 } from 'lucide-react'
 import './Tasks.css'
 import { Link } from 'react-router-dom'
@@ -8,46 +8,36 @@ export const Tasks = () => {
     const [todos, setTodos] = useState([])
     const [todoIndex, setTodoIndex] = useState(-1)
 
-    useEffect(() => {
-        const todos = JSON.parse(localStorage.getItem('todos'));
-        if (todos) {
-            setTodos(todos)
-        }
-    }, [todo])
-
-
-
-
     const handleAddTodo = () => {
         if (!todo) return
 
         if (todoIndex > -1) {
-            const updatedTodo = [...todos];
-            updatedTodo[todoIndex] = todo;
-            setTodos(updatedTodo);
-            localStorage.setItem('todos', JSON.stringify(updatedTodo));
-            setTodoIndex(-1);
-        } else {
-            const newTodo = [...todos, todo];
-            setTodos(newTodo);
-            localStorage.setItem('todos', JSON.stringify(newTodo));
-        }
+            todos.find((_, index) => {
+                if (index === todoIndex) {
+                    todos[index] = todo
+                }
+            })
+            setTodoIndex(-1)
+            setTodo('')
 
-        setTodo('');
+        }
+        else {
+            setTodos([...todos, todo])
+            setTodo('')
+        }
     }
 
     const handleDeleteTodo = (index) => {
-        const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
-        localStorage.setItem('todos', JSON.stringify(newTodos))
-
+        const newTodos = [...todos]
+        newTodos.splice(index, 1)
+        setTodos(newTodos)
     }
 
     const handleUpdateTodo = (index) => {
         setTodo(todos[index])
         setTodoIndex(index)
-    };
+
+    }
 
     return (
         <>
@@ -68,7 +58,7 @@ export const Tasks = () => {
             </div>
             <div className='todo-wrapper'>
                 {todos?.map((todo, index) => (
-                    <div className='todo-item' key={index}>
+                    <div className='todo-item'>
                         <Link to={`/${index}`} className='todo-link'>
                             <span
                                 key={index}

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Home, About, Header, Tasks } from './components'
+import { Home, About, Header, Tasks, Todo } from './components'
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/about" element={<About />} />
+        <Route path="/:todoId" element={<Todo />} />
       </Routes>
     </>
   )
