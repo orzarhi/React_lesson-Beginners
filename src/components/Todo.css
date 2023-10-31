@@ -1,7 +1,6 @@
 @media screen and (max-width: 768px) {
-	.title {
-		font-size: 1.5em;
+	.todo-title {
 		text-align: center;
-		padding: 0.5rem;
+		font-size: large;
 	}
 }

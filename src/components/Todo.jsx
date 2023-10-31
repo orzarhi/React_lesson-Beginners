@@ -18,7 +18,7 @@ export const Todo = () => {
 
     return (
         <div className='container'>
-            <h1 className='title'>{todo}</h1>
+            <h3 className='todo-title'>{todo}</h3>
         </div>
     )
 }
