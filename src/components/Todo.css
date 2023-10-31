@@ -13,6 +13,23 @@
 	color: #ffc83dc8;
 }
 
+.back-icon:hover {
+	animation: moveLeft 1s ease-in-out;
+	color: #ffc83dfa;
+}
+
+@keyframes moveLeft {
+	0% {
+		transform: translateX(0px);
+	}
+	50% {
+		transform: translateX(-10px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
 @media screen and (max-width: 768px) {
 	.todo-title {
 		text-align: center;

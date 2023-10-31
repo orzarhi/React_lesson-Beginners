@@ -74,6 +74,11 @@ export const Tasks = () => {
                         className='task-input'
                         disabled={onClickCheck}
                         placeholder='Add a new task...'
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                handleAddTodo()
+                            }
+                        }}
                     />
                     {!onClickCheck ?
                         <Check
