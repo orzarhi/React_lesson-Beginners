@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Check, Pencil, Trash2 } from 'lucide-react'
+import { Check, Loader2, Pencil, Trash2 } from 'lucide-react'
 import './Tasks.css'
 import { Link } from 'react-router-dom'
+import { reject, wait } from '../lib/utils'
+import { success, error, info } from '../lib/notification'
 
 export const Tasks = () => {
     const [todo, setTodo] = useState('')
     const [todos, setTodos] = useState([])
     const [todoIndex, setTodoIndex] = useState(-1)
+    const [onClickCheck, setOnClickCheck] = useState(false)
 
     useEffect(() => {
         const todos = JSON.parse(localStorage.getItem('todos'));
@@ -16,25 +19,37 @@ export const Tasks = () => {
     }, [todo])
 
 
+    const handleAddTodo = async () => {
 
+        if (!todo) return info('Please enter a task')
+        try {
+            setOnClickCheck(true)
+            await wait(1000);
+            // await reject(1000)
 
-    const handleAddTodo = () => {
-        if (!todo) return
+            if (todoIndex > -1) {
+                const updatedTodo = [...todos];
+                updatedTodo[todoIndex] = todo;
+                setTodos(updatedTodo);
+                localStorage.setItem('todos', JSON.stringify(updatedTodo));
+                setTodoIndex(-1);
+                success('Task updated successfully')
+            } else {
+                const newTodo = [...todos, todo];
+                setTodos(newTodo);
+                localStorage.setItem('todos', JSON.stringify(newTodo));
+                success('Task added successfully')
+            }
 
-        if (todoIndex > -1) {
-            const updatedTodo = [...todos];
-            updatedTodo[todoIndex] = todo;
-            setTodos(updatedTodo);
-            localStorage.setItem('todos', JSON.stringify(updatedTodo));
-            setTodoIndex(-1);
-        } else {
-            const newTodo = [...todos, todo];
-            setTodos(newTodo);
-            localStorage.setItem('todos', JSON.stringify(newTodo));
+            setTodo('');
+        } catch (err) {
+            error('Something went wrong')
+        } finally {
+            setOnClickCheck(false)
         }
 
-        setTodo('');
     }
+
 
     const handleDeleteTodo = (index) => {
         const newTodos = [...todos];
@@ -51,32 +66,32 @@ export const Tasks = () => {
 
     return (
         <>
-            <div className='task-wrapper'>
-                <div>
+            <div className='container'>
+                <div style={{ display: 'flex', marginLeft: '1.5rem' }}>
                     <input
                         onChange={({ target }) => setTodo(target.value)}
                         value={todo}
                         className='task-input'
+                        disabled={onClickCheck}
                         placeholder='Add a new task...'
                     />
-                    <Check
-                        onClick={handleAddTodo}
-                        className='check-icon'
-                        style={{ cursor: todo ? 'pointer' : 'not-allowed' }}
-                    />
+                    {!onClickCheck ?
+                        <Check
+                            onClick={handleAddTodo}
+                            className='icon'
+                            style={{ cursor: todo ? 'pointer' : 'not-allowed' }}
+                        /> :
+                        <Loader2 className='icon loading' />
+                    }
                 </div>
             </div>
             <div className='todo-wrapper'>
                 {todos?.map((todo, index) => (
                     <div className='todo-item' key={index}>
                         <Link to={`/${index}`} className='todo-link'>
-                            <span
-                                key={index}
-                            >
-                                {index + 1}. {todo}
-                            </span>
+                            <span style={{ opacity: todoIndex === index ? 0.5 : 1 }}>{index + 1}. {todo}</span>
                         </Link>
-                        <div >
+                        <div>
                             <Trash2
                                 className='trash-icon'
                                 onClick={() => handleDeleteTodo(index)}
@@ -88,7 +103,10 @@ export const Tasks = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+                <div className='todo-item'>
+                    {(todoIndex === -1 && onClickCheck) && <span style={{ opacity: 0.5 }}>{todos.length + 1}. {todo}</span>}
+                </div>
+            </div >
         </>
     )
 }

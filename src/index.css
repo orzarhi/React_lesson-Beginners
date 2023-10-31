@@ -5,3 +5,24 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	flex-direction: column;
+	padding: 5% 0;
+}
+
+.icon {
+	width: 2rem;
+	height: 2rem;
+	position: relative;
+	right: 2.5rem;
+	top: 3.5px;
+	padding: 0.1rem;
+	cursor: pointer;
+	border-radius: 50%;
+	box-shadow: 0 0 0 1px #94808020;
+	color: rgb(0, 0, 0);
+}

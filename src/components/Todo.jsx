@@ -16,6 +16,8 @@ export const Todo = () => {
     }, [todoId]);
 
     return (
-        <div>{todo}</div>
+        <div className='container'>
+            <h1>{todo}</h1>
+        </div>
     )
 }

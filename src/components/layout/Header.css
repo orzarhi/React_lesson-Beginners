@@ -21,3 +21,9 @@
 .link:hover {
 	color: #b2b0b0;
 }
+
+@media (max-width: 768px) {
+	.links-wrapper {
+		gap: 4rem;
+	}
+}
