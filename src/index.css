@@ -23,7 +23,7 @@ body {
 	padding: 0.1rem;
 	cursor: pointer;
 	border-radius: 50%;
-	box-shadow: 0 0 0 1px #94808020;
+	box-shadow: 1px 1px 1px 1px #0000005e;
 	color: rgb(0, 0, 0);
 	background-color: white;
 }
