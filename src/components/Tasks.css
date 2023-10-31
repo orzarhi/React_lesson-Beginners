@@ -10,7 +10,7 @@
 }
 
 .loading {
-	animation: spin 1s linear infinite;
+	animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -70,7 +70,7 @@
 }
 
 .task-input:disabled {
-	background: #ebebeb;
+	background: #fff8f8;
 }
 
 @media (max-width: 768px) {
