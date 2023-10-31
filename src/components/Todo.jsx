@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import './Todo.css'
 
 export const Todo = () => {
     const { todoId } = useParams();
@@ -17,7 +18,7 @@ export const Todo = () => {
 
     return (
         <div className='container'>
-            <h1>{todo}</h1>
+            <h1 className='title'>{todo}</h1>
         </div>
     )
 }

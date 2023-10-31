@@ -3,7 +3,6 @@
 	text-align: center;
 }
 
-/* media qurey */
 @media screen and (max-width: 768px) {
 	.title {
 		font-size: 1.5em;
