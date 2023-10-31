@@ -38,17 +38,25 @@
 }
 
 .trash-icon {
-	color: rgba(255, 0, 0, 0.58);
+	color: rgba(255, 0, 0, 0.434);
 	margin-right: 1.5rem;
 	cursor: pointer;
 	width: 1.5rem;
 }
 
+.trash-icon:hover {
+	color: rgba(255, 0, 0, 0.8);
+}
+
 .pencil-icon {
-	color: rgba(87, 87, 238, 0.58);
+	color: rgba(68, 68, 243, 0.789);
 	margin-right: 1.5rem;
 	cursor: pointer;
 	width: 1.5rem;
+}
+
+.pencil-icon:hover {
+	color: rgba(68, 68, 243, 1);
 }
 
 .todo-link {

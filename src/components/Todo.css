@@ -1,3 +1,18 @@
+.back-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 20px;
+}
+
+.back-icon {
+	font-size: 30px;
+	color: #fff;
+	margin-right: 10px;
+	cursor: pointer;
+	color: #ffc83dc8;
+}
+
 @media screen and (max-width: 768px) {
 	.todo-title {
 		text-align: center;

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import './Todo.css'
+import { CornerUpLeft } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import './Todo.css';
 
 export const Todo = () => {
     const { todoId } = useParams();
+    const navigate = useNavigate()
     const [todo, setTodo] = useState('');
 
     useEffect(() => {
@@ -19,6 +21,10 @@ export const Todo = () => {
     return (
         <div className='container'>
             <h3 className='todo-title'>{todo}</h3>
+            <CornerUpLeft
+                className='back-icon'
+                onClick={() => navigate(-1)}
+            />
         </div>
     )
 }
