@@ -52,6 +52,7 @@ export const Tasks = () => {
 
 
     const handleDeleteTodo = (index) => {
+
         const newTodos = [...todos];
         newTodos.splice(index, 1);
         setTodos(newTodos);
@@ -63,6 +64,13 @@ export const Tasks = () => {
         setTodo(todos[index])
         setTodoIndex(index)
     };
+
+    const handleClearAll = () => {
+        if (!window.confirm('Are you sure you want to delete all tasks?')) return;
+
+        localStorage.removeItem('todos');
+        setTodos([]);
+    }
 
     return (
         <>
@@ -111,6 +119,10 @@ export const Tasks = () => {
                 <div className='todo-item'>
                     {(todoIndex === -1 && onClickCheck) && <span style={{ opacity: 0.5 }}>{todos.length + 1}. {todo}</span>}
                 </div>
+                {todos.length ?
+                    <button className='btn-clear' onClick={handleClearAll}>
+                        Clear All
+                    </button> : null}
             </div >
         </>
     )

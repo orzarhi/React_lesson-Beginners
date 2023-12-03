@@ -73,6 +73,19 @@
 	background: #fff8f8;
 }
 
+.btn-clear {
+	background: linear-gradient(to right, #ff416dc5, #fffb2b);
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	padding: 0 10px;
+	font-size: 15px;
+	font-weight: bold;
+	box-shadow: 0 0 0 1px #ffffff;
+	width: 24%;
+	height: 2rem;
+	cursor: pointer;
+}
+
 @media (max-width: 768px) {
 	.todo-wrapper {
 		margin-top: 1rem;
@@ -82,6 +95,9 @@
 	}
 	.todo-item {
 		width: 21rem;
+	}
+	.btn-clear {
+		width: 60%;
 	}
 }
 
